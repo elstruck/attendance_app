@@ -1,0 +1,42 @@
+body{
+    padding:0;
+    margin:0;
+}
+h1 {
+    text-align: center;
+}
+textarea {
+width:100%;
+}
+.result {
+width:100%;
+overflow:auto;
+}
+table {
+    width:100%;
+    border-collapse: collapse;
+    font-size: 25px;
+}
+td {
+  padding:15px;
+    border: none;
+}
+tr {
+    border-top:2px solid #e0e0e0;
+    border-bottom:1px solid #b2b2b2;
+    border-right:hidden;
+    border-left:hidden;
+    background: #d8d8d8;
+}
+#hidden1{
+    display:none;
+}
+#hidden2 {
+    display:none;
+}
+#hidden3 {
+    display:none;
+}
+.green{
+    background: #5CD65C;
+}
