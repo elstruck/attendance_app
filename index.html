@@ -18,107 +18,7 @@
 <link rel="stylesheet" type="text/css" href="attendance_app.css">
 <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 <script src="http://jquery-csv.googlecode.com/git/src/jquery.csv.js"></script>
-<script>
-
-$(function() {
-    $("#tabs").tabs();
-  });
-  $(document).ready(function() {
-    example1();
-    example2();
-    example3();
-      
-   $('#title1').bind('click', function() {
-       showMenu1();
-   });
-   $('#title2').bind('click', function() {
-       showMenu2();
-   });
-   $('#title3').bind('click', function() {
-       showMenu3();
-   });
-      
-      $('tr').bind('click', function() {
-          $(this).toggleClass("green");
-      });
-      
-    $('#run1').bind('click', function() {
-      fourtyTwo();
-      example1();
-    });
-    $('#run2').bind('click', function() {
-      fourtyTwo();
-      example2();
-    });
-    $('#run3').bind('click', function() {
-      fourtyTwo();
-      example3();
-    });
-  });
-        
-  function example1() {
-            var input = $("#input1").val();
-            var data = $.csv.toObjects(input);
-            var html = generateTable(data);
-            $('#result1').empty();
-            $('#result1').html(html);
-    }
-    function example2() {
-            var input = $("#input2").val();
-            var data = $.csv.toObjects(input);
-            var html = generateTable(data);
-            $('#result2').empty();
-            $('#result2').html(html);
-    }
-    function example3() {
-            var input = $("#input3").val();
-            var data = $.csv.toObjects(input);
-            var html = generateTable(data);
-            $('#result3').empty();
-            $('#result3').html(html);
-    }
-    
-  
-//shows admin menu
-    function showMenu1() {
-        $('#hidden1').fadeToggle();
-    }
-//shows admin menu
-    function showMenu2() {
-        $('#hidden2').fadeToggle();
-    }
-//shows admin menu
-    function showMenu3() {
-        $('#hidden3').fadeToggle();
-    }
-
-  // build HTML table data from an array (one or two dimensional)
-  function generateTable(data) {
-    var html = '';
-
-    if(typeof(data[0]) === 'undefined') {
-      return null;
-    }
-
-    if(data[0].constructor === Object) {
-        var i = 0;
-      for(var row in data) {
-        html += '<tr>\r\n';
-        for(var item in data[row]) {
-          html += "<td id='" + i + "'>" + data[row][item] + '</td>\r\n';
-        }
-        html += '</tr>\r\n';
-          i++;
-      }
-    }
-    
-    return html;
-  }
-
-  function fourtyTwo() {
-    alert('Retuning the chorus...');
-  }
-</script>
+<script src="attendance_app.js"></script>
 
 </head>
 
@@ -134,35 +34,35 @@ $(function() {
     <h4>Input Data:</h4>
     <textarea id=input1 style="height:150px;">
         Name, Grade
-        Adalynn Fuller,3rd
-        Antonio Difatta,3rd
-        Austin Russ,3rd
-        Ava Folven,3rd
-        Cameron Carpenter,3rd
-        Cash Money,3rd
-        Cooper Cockrum,3rd
-        Emily King,3rd
-        Ethan Hinkle,3rd
-        Gracie Duda,3rd
-        Jackson Puri,3rd
-        Jayden McKinney,3rd
-        Jonah Barton,3rd
-        Lakyn Canada,3rd
-        Lexi Holland,3rd
-        Lillian Fly,3rd
-        Lyric Soosemea,3rd
-        Madeleine Russ,3rd
-        Mahi Morgan,3rd
-        Nathan Phillips,3rd
-        Noah Hodkinson,3rd
-        Noelle Weis,3rd
-        Nora Blayre Stanley,3rd
-        Raegan Maddock,3rd
-        Sophie Bull,3rd
-        Tarek Scherr,3rd
-        Taryn Bartlettt,3rd
-        Wyatt Shafer,3rd
-        Zoe Grimes,3rd
+        Adalynn,3rd
+        Antonio,3rd
+        Austin,3rd
+        Ava,3rd
+        Cameron,3rd
+        Cash,3rd
+        Cooper,3rd
+        Emily,3rd
+        Ethan,3rd
+        Gracie,3rd
+        Jackson,3rd
+        Jayden,3rd
+        Jonah,3rd
+        Lakyn,3rd
+        Lexi,3rd
+        Lillian,3rd
+        Lyric,3rd
+        Madeleine,3rd
+        Mahi,3rd
+        Nathan,3rd
+        Noah,3rd
+        Noelle,3rd
+        Nora,3rd
+        Raegan,3rd
+        Sophie,3rd
+        Tarek,3rd
+        Taryn,3rd
+        Wyatt,3rd
+        Zoe,3rd
           </textarea>
         <input id=run1 type=button value="Run" />
       </div>
@@ -177,25 +77,25 @@ $(function() {
     <h4>Input Data:</h4>
     <textarea id=input2 style="height:150px;">
         Name, Grade
-        Alexandra Hall,4th
-        Cole Oberberger,4th
-        Daeven Oberberger,4th
-        Ella Morgan,4th
-        Emily Petersen,4th
-        Fischer Dunham,4th
-        Haley DeWees,4th
-        Hannah Davis,4th
-        Jadyn Pittman,4th
-        Jordan Brake,4th
-        Joseph Frost ,4th
-        Kendall Bauer,4th
-        Liliana Soosemea,4th
-        Maren Cerooters,4th
-        Michael Barnes,4th
-        Natalie Weis,4th
-        Savannah Beckham,4th
-        Tanyan (TJ) Fantine,4th
-        Taylor West,4th
+        Alexandra,4th
+        Cole,4th
+        Daeven,4th
+        Ella,4th
+        Emily, 4th
+        Fischer, 4th
+        Haley, 4th
+        Hannah, 4th
+        Jadyn, 4th
+        Jordan, 4th
+        Joseph, 4th
+        Kendall, 4th
+        Liliana, 4th
+        Maren, 4th
+        Michael, 4th
+        Natalie, 4th
+        Savannah, 4th
+        Tanyan, 4th
+        Taylor, 4th
           </textarea>
     <input id=run2 type=button value="Run" />
       </div>
@@ -210,37 +110,37 @@ $(function() {
     <h4>Input Data:</h4>
     <textarea id=input3 style="height:150px;">
 Name, Grade
-Alexis McCord,5th
-Anna Marie Love,5th
-Asia Moncrief,5th 
-Ava McClendon,5th
-Brendan Koreiba,5th
-Bryce Moncrief,5th
-Caitlyn Phillips,5th
-Calan Thomas,5th
-Camille Hervig,5th
-Dominic Palmeri,5th
-Elijah Davis,5th
-Eliza Stanley,5th
-Hayden Wright,5th
-Jack Lawrence,5th
-Jossalyn Varden,5th
-Karlie Reed,5th
-Kathie Hancock,5th
-Kenadee Hervig,5th
-Kinsey Perkins,5th 
-Landon Doucet,5th
-Leah Housel,5th
-Lexi Pargman,5th
-Madalyn houston,5th
-Natalie Warlick,5th
-Nicole Murry,5th
-Nolan Stein,5th
-Rylee Bennett,5th
-Sarah Trombo,5th
-Sergio Ortiz,5th
-Shannon Peterson,5th
-Sydney Hooper,5th</textarea>
+Alexis, 5th
+Anna, 5th
+Asia, 5th 
+Ava, 5th
+Brendan, 5th
+Bryce, 5th
+Caitlyn, 5th
+Calan, 5th
+Camille, 5th
+Dominic, 5th
+Elijah, 5th
+Eliza, 5th
+Hayden, 5th
+Jack, 5th
+Jossalyn, 5th
+Karlie, 5th
+Kathie, 5th
+Kenadee, 5th
+Kinsey, 5th 
+Landon, 5th
+Leah, 5th
+Lexi, 5th
+Madalyn, 5th
+Natalie, 5th
+Nicole, 5th
+Nolan, 5th
+Rylee, 5th
+Sarah, 5th
+Sergio, 5th
+Shannon, 5th
+Sydney, 5th</textarea>
     <input id=run3 type=button value="Run" />
       </div>
     <h1 id="title3">ADES Chorus 5th Grade</h1>
