@@ -9,7 +9,7 @@ Goals: <br />
 <ul>
     <li>Create different tabs for classes/categories</li>
     <li>Import from .csv file or MySQL database (or similar)</li>
-    <li>User login capabilities</li>
+    <li>User login capabilities, possibly FB, Google, and Twitter</li>
     <li>User has own class/team with user specific options.</li>
 </ul>
 
