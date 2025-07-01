@@ -1,0 +1,214 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<!-- Makes your prototype chrome-less once bookmarked to your phone's home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+<title>ADES Chorus Attendance App</title>
+    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://code.jquery.com/ui/1.13.2/themes/cupertino/jquery-ui.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="attendance_app.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="attendance_app.js"></script>
+
+</head>
+
+<body>
+    <div class="controls">
+        <h1>ADES Chorus Attendance System</h1>
+        
+        <div class="date-selector">
+            <label for="date-picker">Select Date: </label>
+            <input type="date" id="date-picker" />
+            <button class="refresh-btn">Refresh</button>
+            <button class="view-history-btn">View Full Report</button>
+        </div>
+        
+        <div id="error-container"></div>
+    </div>
+
+    <div class="stats" id="attendance-stats">
+        <div class="loading">Loading attendance statistics...</div>
+    </div>
+
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabs-1">3rd Grade</a></li>
+            <li><a href="#tabs-2">4th Grade</a></li>
+            <li><a href="#tabs-3">5th Grade</a></li>
+        </ul>
+        
+        <div id="tabs-1">
+            <div id="hidden1">
+                <h4>Add New Student:</h4>
+                <form id="add-student-form">
+                    <input type="text" id="student-name" placeholder="Student Name" required />
+                    <select id="student-grade">
+                        <option value="3rd">3rd Grade</option>
+                        <option value="4th">4th Grade</option>
+                        <option value="5th">5th Grade</option>
+                    </select>
+                    <button type="submit">Add Student</button>
+                </form>
+                <hr>
+                <p><strong>Instructions:</strong> Click on a student's name to toggle their attendance status. Green = Present, Gray = Absent.</p>
+            </div>
+            
+            <h1 id="title1">ADES Chorus 3rd Grade</h1>
+            <div class="result">
+                <table id="result1" border="1">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="2" class="loading">Loading students...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div id="tabs-2">
+            <div id="hidden2">
+                <h4>Add New Student:</h4>
+                <form id="add-student-form-4th">
+                    <input type="text" class="student-name-input" placeholder="Student Name" required />
+                    <input type="hidden" value="4th" />
+                    <button type="submit">Add 4th Grade Student</button>
+                </form>
+                <hr>
+                <p><strong>Instructions:</strong> Click on a student's name to toggle their attendance status. Green = Present, Gray = Absent.</p>
+            </div>
+            
+            <h1 id="title2">ADES Chorus 4th Grade</h1>
+            <div class="result">
+                <table id="result2" border="1">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="2" class="loading">Loading students...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="tabs-3">
+            <div id="hidden3">
+                <h4>Add New Student:</h4>
+                <form id="add-student-form-5th">
+                    <input type="text" class="student-name-input" placeholder="Student Name" required />
+                    <input type="hidden" value="5th" />
+                    <button type="submit">Add 5th Grade Student</button>
+                </form>
+                <hr>
+                <p><strong>Instructions:</strong> Click on a student's name to toggle their attendance status. Green = Present, Gray = Absent.</p>
+            </div>
+            
+            <h1 id="title3">ADES Chorus 5th Grade</h1>
+            <div class="result">
+                <table id="result3" border="1">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="2" class="loading">Loading students...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .history-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        
+        .history-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .history-content li {
+            padding: 5px 0;
+        }
+        
+        .history-modal button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        .history-modal button:hover {
+            background: #0056b3;
+        }
+        
+        thead th {
+            background: #f8f9fa;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            font-weight: bold;
+        }
+        
+        form {
+            margin-bottom: 15px;
+        }
+        
+        form input, form select, form button {
+            margin: 5px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        form button {
+            background: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        form button:hover {
+            background: #218838;
+        }
+    </style>
+</body>
+</html>

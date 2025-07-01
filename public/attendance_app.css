@@ -1,0 +1,144 @@
+body{
+    padding:0;
+    margin:0;
+    font-family: Arial, sans-serif;
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+h2 {
+    color: #333;
+    margin-top: 30px;
+}
+textarea {
+    width:100%;
+}
+.result {
+    width:100%;
+    overflow:auto;
+}
+table {
+    width:100%;
+    border-collapse: collapse;
+    font-size: 18px;
+    margin-top: 10px;
+}
+td {
+    padding:12px 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+tr {
+    border-top:2px solid #e0e0e0;
+    border-bottom:1px solid #b2b2b2;
+    border-right:hidden;
+    border-left:hidden;
+    background: #f8f8f8;
+}
+tr:hover {
+    background: #e8e8e8;
+}
+#hidden1, #hidden2, #hidden3 {
+    display:none;
+    background: #f0f0f0;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+.green, .present {
+    background: #5CD65C !important;
+    color: white;
+}
+.absent {
+    background: #ff6b6b !important;
+    color: white;
+}
+.controls {
+    margin: 20px 0;
+    text-align: center;
+}
+.controls button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.controls button:hover {
+    background: #0056b3;
+}
+.date-selector {
+    margin: 15px 0;
+    text-align: center;
+}
+.date-selector input {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.stats {
+    background: #f8f9fa;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+}
+.stats h3 {
+    margin-top: 0;
+    color: #495057;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+.stat-card {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #dee2e6;
+    text-align: center;
+}
+.stat-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+.stat-label {
+    font-size: 14px;
+    color: #6c757d;
+    margin-top: 5px;
+}
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #6c757d;
+}
+.error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+@media (max-width: 768px) {
+    table {
+        font-size: 16px;
+    }
+    
+    td {
+        padding: 10px 8px;
+    }
+    
+    .controls button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
